@@ -2,8 +2,8 @@ package models
 
 // User is the main user model.
 type User struct {
-	ID    uint   `json:"id"`
-	Email string `json:"email"`
+	ID    uint   `json:"id" gorm:"primaryKey"`
+	Email string `json:"email" gorm:"index:length:50,unique"`
 }
 
 // GetUsers queries the database for all users.
