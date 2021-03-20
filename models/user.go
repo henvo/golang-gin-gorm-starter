@@ -1,9 +1,15 @@
 package models
 
+import (
+	"time"
+)
+
 // User is the main user model.
 type User struct {
-	ID    uint   `json:"id" gorm:"primaryKey"`
-	Email string `json:"email" gorm:"index:length:50,unique"`
+	ID        uint      `json:"id" gorm:"->;primaryKey"`
+	CreatedAt time.Time `json:"created_at"`
+	UpdatedAt time.Time `json:"updated_at"`
+	Email     string    `json:"email" gorm:"index:,unique"`
 }
 
 // GetUsers queries the database for all users.

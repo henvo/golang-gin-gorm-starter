@@ -18,8 +18,10 @@ func SetupDatabase() {
 	n := helper.GetEnv("DATABASE_NAME", "go_test")
 	q := "charset=utf8mb4&parseTime=True&loc=Local"
 
+	// Assemble the connection string.
 	dsn := fmt.Sprintf("%s:%s@tcp(%s)/%s?%s", u, p, h, n, q)
 
+	// Connect to the database.
 	db, err := gorm.Open(mysql.Open(dsn), &gorm.Config{})
 
 	// Migrate the schema
